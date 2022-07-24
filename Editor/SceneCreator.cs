@@ -16,7 +16,11 @@ public class SceneCreator : CernunWindow
     [MenuItem("Cernun Basics/Scene Maker")]
     static void Init()
     {
-        GetWindowWithRect<SceneCreator>(new Rect(0, 0, 600, 400)).Show();
+        SceneCreator window = GetWindowWithRect<SceneCreator>(new Rect(0, 0, 600, 400));
+
+        window.minSize = new Vector2(50, 50);
+        window.maxSize = new Vector2(1200, 600);
+        window.Show();
     }
 
     private void OnEnable()
@@ -45,17 +49,17 @@ public class SceneCreator : CernunWindow
     void OnGUI()
     {
         // Initialisation des paramètres pour l'éditeur
-        posY = 5;
+        GUIInitialize(position.width, position.height, 5f, 10f);
         ChangeLineColor(Color.gray);
 
-        DrawTextBox(new Rect(10, posY, position.width - 20, 20), "Nom de la scene", ref sceneName);
+        DrawTextBox("Nom de la scene", ref sceneName);
 
-        DrawHorizontalSeparator(position.width - 20);
+        DrawHorizontalSeparator();
 
         // Liste des prefab en deux colones
         DrawColumnSelector<bool, int>(ref controllersToggle, ref othersCount);
 
-        DrawHorizontalSeparator(position.width - 20);
+        DrawHorizontalSeparator();
 
         // Récapitulatif
         GUIStyle centeredStyle = GUI.skin.GetStyle("Label");
@@ -64,7 +68,7 @@ public class SceneCreator : CernunWindow
         EditorGUI.LabelField(new Rect(0, posY, position.width, 20), "Recapitulatif", centeredStyle);
         posY += 25;
 
-        DrawHorizontalSeparator(position.width - 20);
+        DrawHorizontalSeparator();
 
         GUIStyle boldStyle = GUI.skin.GetStyle("Label");
         boldStyle.alignment = TextAnchor.MiddleLeft;
@@ -88,11 +92,11 @@ public class SceneCreator : CernunWindow
             }
         }
 
-        DrawHorizontalSeparator(position.width - 20);
+        DrawHorizontalSeparator();
 
-        ButtonDrawer(position.width / 2 - 200, 400, "Generate Scene", GenerateScene);
+        ButtonDrawer(400, "Generate Scene", GenerateScene);
 
-        DrawHorizontalSeparator(position.width - 20);
+        DrawVerticalScrollBar();
     }
 
     void GenerateScene()

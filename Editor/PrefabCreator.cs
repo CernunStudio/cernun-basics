@@ -13,17 +13,20 @@ public class PrefabCreator : CernunWindow
     Dictionary<PathInfo, bool> editorToogle;
     Dictionary<PathInfo, bool> otherToogle;
 
-    int selectedTab;
+    //int selectedTab;
 
     [MenuItem("Cernun Basics/Prefab Maker")]
     static void Init()
     {
-        GetWindowWithRect<PrefabCreator>(new Rect(0, 0, 600, 400)).Show();
+        PrefabCreator window = GetWindowWithRect<PrefabCreator>(new Rect(0, 0, 600, 400));
+        window.minSize = new Vector2(50, 50);
+        window.maxSize = new Vector2(1200, 600);
+        window.Show();
+
     }
 
     private void OnEnable()
     {
-        selectedTab = 0;
 
         paths = AssetDatabase.FindAssets("t:TextAsset", new string[] { "Assets/Scripts" });
 
@@ -48,41 +51,19 @@ public class PrefabCreator : CernunWindow
     private void OnGUI()
     {
         // Initialisation des paramètres
-        posY = 5;
+        GUIInitialize(position.width, position.height, 5f, 10f);
+
         ChangeLineColor(Color.gray);
 
-        DrawTextBox(new Rect(10, posY, position.width - 20, 20), "Nom du prefab", ref prefabName);
+        DrawTextBox("Nom du prefab", ref prefabName);
 
-        // Tentatives de Tab
-        selectedTab = GUI.Toolbar(new Rect(10, posY, position.width - 20, 20), selectedTab, new string[]{"Editor", "Other" });
+        DrawTab(new Dictionary<string, Dictionary<PathInfo, bool>>() { { "Editor" , editorToogle  }, { "Other" , otherToogle } });
 
-        posY += 25;
+        DrawHorizontalSeparator();
 
-        switch (selectedTab)
-        {
-            case 0:
-                PathInfo[] editorPaths = new PathInfo[editorToogle.Count];
-                editorToogle.Keys.CopyTo(editorPaths, 0);
-                foreach (PathInfo item in editorPaths)
-                {
-                    editorToogle[item] = EditorGUI.ToggleLeft(new Rect(10, posY, 280, 20), item.PathName, editorToogle[item]);
-                    posY += 25;
-                }
-                break;
-            case 1:
-                PathInfo[] otherPaths = new PathInfo[otherToogle.Count];
-                otherToogle.Keys.CopyTo(otherPaths, 0);
-                foreach (PathInfo item in otherPaths)
-                {
-                    otherToogle[item] = EditorGUI.ToggleLeft(new Rect(10, posY, 280, 20), item.PathName, otherToogle[item]);
-                    posY += 25;
-                }
-                break;
-        }
+        ButtonDrawer(400, "Generate Prefab", GeneratePrefab);
 
-        DrawHorizontalSeparator(position.width - 20);
-
-        ButtonDrawer(position.width / 2 - 200, 400, "Generate Prefab", GeneratePrefab);
+        DrawVerticalScrollBar();
     }
 
     void GeneratePrefab()
