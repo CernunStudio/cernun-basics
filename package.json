@@ -1,6 +1,6 @@
 {
   "name": "com.cernun.cernun-basics",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "displayName": "Cernun Basics",
   "description": "Package that created to add multiple tools",
   "unity": "2021.3",

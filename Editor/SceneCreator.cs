@@ -65,7 +65,7 @@ public class SceneCreator : CernunWindow
         GUIStyle centeredStyle = GUI.skin.GetStyle("Label");
         centeredStyle.alignment = TextAnchor.MiddleCenter;
 
-        EditorGUI.LabelField(new Rect(0, posY, position.width, 20), "Recapitulatif", centeredStyle);
+        EditorGUI.LabelField(new Rect(0, posY - vScroll, position.width, 20), "Recapitulatif", centeredStyle);
         posY += 25;
 
         DrawHorizontalSeparator();
@@ -78,7 +78,7 @@ public class SceneCreator : CernunWindow
         {
             if (item.Value)
             {
-                EditorGUI.LabelField(new Rect(10, posY, position.width / 2 - 20, 20), item.Key.PathName + " x1", boldStyle);
+                EditorGUI.LabelField(new Rect(10, posY - vScroll, position.width / 2 - 20, 20), item.Key.PathName + " x1", boldStyle);
                 posY += 25;
             }
         }
@@ -87,7 +87,7 @@ public class SceneCreator : CernunWindow
         {
             if (item.Value > 0)
             {
-                EditorGUI.LabelField(new Rect(10, posY, position.width / 2 - 20, 20), item.Key.PathName + " x" + item.Value);
+                EditorGUI.LabelField(new Rect(10, posY - vScroll, position.width / 2 - 20, 20), item.Key.PathName + " x" + item.Value);
                 posY += 25;
             }
         }
