@@ -22,20 +22,19 @@ public class PrefabCreator : CernunWindow
         window.minSize = new Vector2(50, 50);
         window.maxSize = new Vector2(1200, 600);
         window.Show();
-
     }
 
     private void OnEnable()
     {
-
-        paths = AssetDatabase.FindAssets("t:TextAsset", new string[] { "Assets/Scripts" });
+        CernunBasicUtils.ControlPath(CernunBasicConfig.ScriptPath);
+        paths = AssetDatabase.FindAssets("t:TextAsset", new string[] { CernunBasicConfig.ScriptPath });
 
         editorToogle = new Dictionary<PathInfo, bool>();
         otherToogle = new Dictionary<PathInfo, bool>();
 
         foreach (string path in paths)
         {
-            PathInfo info = new PathInfo(path);
+            PathInfo info = new (path);
             if (info.Folder == "CernunEditor")
             {
                 editorToogle.Add(info, false);
@@ -45,7 +44,6 @@ public class PrefabCreator : CernunWindow
                 otherToogle.Add(info, false);
             }
         }
-
     }
 
     private void OnGUI()
@@ -68,14 +66,13 @@ public class PrefabCreator : CernunWindow
 
     void GeneratePrefab()
     {
-        GameObject go = new GameObject(prefabName);
-
+        GameObject go = new (prefabName);
 
         foreach (KeyValuePair<PathInfo, bool> item in otherToogle)
         {
             if (item.Value)
             {
-                Type t = GetDynamicType(item.Key.PathName);
+                Type t = CernunBasicUtils.GetDynamicType(item.Key.PathName);
                 if (t != null)
                 {
                     go.AddComponent(t);
@@ -87,7 +84,7 @@ public class PrefabCreator : CernunWindow
         {
             if (item.Value)
             {
-                Type t = GetDynamicType(item.Key.PathName);
+                Type t = CernunBasicUtils.GetDynamicType(item.Key.PathName);
                 if (t != null)
                 {
                 go.AddComponent(t);
@@ -95,26 +92,9 @@ public class PrefabCreator : CernunWindow
             }
         }
 
-        if (!AssetDatabase.IsValidFolder("Assets/Prefabs"))
-        {
-            AssetDatabase.CreateFolder("Assets", "Prefabs");
-        }
+        CernunBasicUtils.ControlPath(CernunBasicConfig.PrefabPath);
 
-        PrefabUtility.SaveAsPrefabAsset(go, "Assets/Prefabs/" + prefabName + ".prefab");
+        PrefabUtility.SaveAsPrefabAsset(go, CernunBasicConfig.PrefabPath  + "/ " + prefabName + ".prefab");
         DestroyImmediate(go);
-    }
-
-    private Type GetDynamicType(string nameObject)
-    {
-        Type t = null;
-        foreach (Assembly ass in AppDomain.CurrentDomain.GetAssemblies())
-        {
-            if (ass.FullName.StartsWith("System."))
-                continue;
-            t = ass.GetType(nameObject);
-            if (t != null)
-                break;
-        }
-        return t;
     }
 }

@@ -1,4 +1,3 @@
-
 using UnityEditor;
 
 public class PathInfo
@@ -15,9 +14,9 @@ public class PathInfo
         AssetPath = AssetDatabase.GUIDToAssetPath(gID);
         string[] tabPath = AssetPath.Split("/");
 
-        Folder = tabPath[tabPath.Length -2];
+        Folder = tabPath[^2];
 
-        string[] tabName = tabPath[tabPath.Length - 1].Split(".");
+        string[] tabName = tabPath[^1].Split(".");
         PathName = tabName[0];
         Extension = tabName[1];
     }

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/FEditor/ConfigHandler/ConfigHandler.uss?fileID=7433441132597879392&amp;guid=d0e72afada31057488d1a69ae536aa87&amp;type=3#ConfigHandler" />
+    <ui:VisualElement name="Container" style="width: 100%; height: 100%; flex-direction: row; max-width: initial; max-height: initial;">
+        <ui:VisualElement name="ConfigList" style="width: 35%; height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
+        <ui:VisualElement name="ConfigView" style="width: 65%; height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; border-left-width: 1px; border-left-color: rgb(34, 34, 34); border-right-color: rgb(34, 34, 34); border-top-color: rgb(34, 34, 34); border-bottom-color: rgb(34, 34, 34);" />
+    </ui:VisualElement>
+</ui:UXML>

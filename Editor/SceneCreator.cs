@@ -27,14 +27,16 @@ public class SceneCreator : CernunWindow
     {
         sceneName = "new Scene";
 
-        paths = AssetDatabase.FindAssets("t:GameObject", new string[] { "Assets/Prefabs" });
+        CernunBasicUtils.ControlPath(CernunBasicConfig.PrefabPath);
+
+        paths = AssetDatabase.FindAssets("t:GameObject", new string[] { CernunBasicConfig.PrefabPath });
 
         controllersToggle = new Dictionary<PathInfo, bool>();
         othersCount = new Dictionary<PathInfo, int>();
 
         foreach (string path in paths)
         {
-            PathInfo info = new PathInfo(path);
+            PathInfo info = new (path);
             if (info.PathName.Contains("Controller"))
             {
                 controllersToggle.Add(info, false);
@@ -122,11 +124,8 @@ public class SceneCreator : CernunWindow
             }
         }
 
-        if (!AssetDatabase.IsValidFolder("Assets/Scenes"))
-        {
-            AssetDatabase.CreateFolder("Assets", "Scenes");
-        }
+        CernunBasicUtils.ControlPath(CernunBasicConfig.ScenePath);
 
-        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene(), "Assets/Scenes/" + sceneName + ".unity");
+        EditorSceneManager.SaveScene(EditorSceneManager.GetActiveScene(), CernunBasicConfig.ScenePath + "/" + sceneName + ".unity");
     }
 }

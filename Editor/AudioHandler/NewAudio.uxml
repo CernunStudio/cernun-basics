@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/FEditor/AudioHandler/NewAudio.uss?fileID=7433441132597879392&amp;guid=23a6513afb5bf07408eeda8249820d78&amp;type=3#NewAudio" />
+    <ui:VisualElement style="width: 100%; height: 100%; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+        <ui:TextField picking-mode="Ignore" label="Audio name" text="audio name" name="AudioNameField" />
+        <uie:ObjectField label="Audio clip" name="AudioClipSelector" type="UnityEngine.AudioClip, UnityEngine.AudioModule" />
+        <ui:VisualElement name="DropDownContainer" />
+        <ui:Button text="Add audio" display-tooltip-when-elided="true" name="AddAudioButton" />
+    </ui:VisualElement>
+</ui:UXML>

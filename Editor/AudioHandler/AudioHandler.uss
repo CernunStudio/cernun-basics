@@ -1,0 +1,34 @@
+#Tabs {
+    flex-direction: row;
+    -unity-font-style: bold;
+    font-size: 14px;
+    justify-content: space-around;
+}
+
+.tab {
+    flex-grow: 1;
+    -unity-text-align: middle-center;
+    background-color: rgb(65, 65, 65);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-left-color: rgb(56, 56, 56);
+    border-right-color: rgb(56, 56, 56);
+    border-top-color: rgb(56, 56, 56);
+    border-bottom-color: rgb(56, 56, 56);
+}
+
+.selectedTab {
+    background-color: rgb(56, 56, 56);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-left-color: rgb(47, 47, 47);
+    border-right-color: rgb(47, 47, 47);
+    border-top-color: rgb(47, 47, 47);
+    border-bottom-color: rgb(47, 47, 47);
+}
+
+.unselectedContent {
+    display: none;
+}

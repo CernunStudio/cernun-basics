@@ -125,25 +125,19 @@ public class CernunWindow : EditorWindow
         leftColumn.Keys.CopyTo(pathLeftCol, 0);
         rightColumn.Keys.CopyTo(pathRightCol, 0);
 
-        float midWidth = wWidth / 2;
-
         foreach (PathInfo item in pathLeftCol)
         {
-            leftColumn[item] = (T)(object)EditorGUI.ToggleLeft(new Rect(marginLeft, (scrolled ? posY - vScroll : posY) + controllerOffset, midWidth - marginLeft - marginRight, 20), item.PathName, Convert.ToBoolean(leftColumn[item]));
+            leftColumn[item] = (T)(object)EditorGUI.ToggleLeft(new Rect(10, (scrolled ? posY - vScroll : posY) + controllerOffset, 280, 20), item.PathName, Convert.ToBoolean(leftColumn[item]));
             controllerOffset += 25;
         }
 
         foreach (PathInfo item in pathRightCol)
         {
-            rightColumn[item] = (U)(object)EditorGUI.IntField(new Rect(midWidth + marginLeft, (scrolled ? posY - vScroll : posY) + otherOffset, midWidth - marginLeft - marginRight, 20), item.PathName, Convert.ToInt32(rightColumn[item]));
-            if (Convert.ToInt32(rightColumn[item]) <0)
-            {
-                rightColumn[item] = (U)(object)0;
-            }
+            rightColumn[item] = (U)(object)EditorGUI.IntField(new Rect(310, (scrolled ? posY - vScroll : posY) + otherOffset, 280, 20), item.PathName, Convert.ToInt32(rightColumn[item]));
             otherOffset += 25;
         }
 
-        Handles.DrawLine(new Vector2(midWidth, posY), new Vector2(midWidth, (scrolled ? posY - vScroll : posY) + (controllerOffset > otherOffset ? controllerOffset : otherOffset) - 5));
+        Handles.DrawLine(new Vector2(300, posY), new Vector2(300, (scrolled ? posY - vScroll : posY) + (controllerOffset > otherOffset ? controllerOffset : otherOffset) - 5));
 
         posY += controllerOffset > otherOffset ? controllerOffset : otherOffset;
     }

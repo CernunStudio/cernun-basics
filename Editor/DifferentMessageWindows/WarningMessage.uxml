@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/FEditor/DifferentMessageWindows/WarningMessage.uss?fileID=7433441132597879392&amp;guid=cfd2c02d66e5b2e439dca19aa3c0ae77&amp;type=3#WarningMessage" />
+    <ui:VisualElement style="width: 100%; height: 100%;">
+        <ui:VisualElement style="width: 100%; height: 70%; flex-direction: row; align-items: center;">
+            <ui:VisualElement style="width: 75px; background-image: url(&apos;project://database/Packages/com.unity.collab-proxy/Editor/PlasticSCM/Assets/Images/iconconflictedoverlay@2x.png?fileID=2800000&amp;guid=5679a74364f6b4440ab7e7aed55cd95e&amp;type=3#iconconflictedoverlay@2x&apos;); height: 75px;" />
+            <ui:Label text="Label" display-tooltip-when-elided="true" name="MessageLabel" style="width: 275px; height: 100%; -unity-text-align: middle-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="width: 100%; height: 30%; flex-direction: row-reverse;">
+            <ui:Button text="Close" display-tooltip-when-elided="true" name="CloseButton" style="width: 30%; height: 100%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

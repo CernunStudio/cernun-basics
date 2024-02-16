@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/FEditor/AudioHandler/AudioHandler.uss?fileID=7433441132597879392&amp;guid=a0fd9912cfc46b44eafb4639d77444d9&amp;type=3#AudioHandler" />
+    <ui:VisualElement name="GlobalContainer" style="width: 100%; height: 100%; min-width: 800px; min-height: 600px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+        <ui:VisualElement name="ContentPart" style="width: 100%; height: 90%;">
+            <ui:VisualElement name="Tabs" style="flex-direction: row; height: 10%; width: 100%;" />
+            <ui:VisualElement name="Contents" style="width: 100%; height: 90%;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="BottomPart" style="width: 100%; height: 10%; flex-direction: row;">
+            <ui:VisualElement name="MusicPlayerConainer" style="height: 100%; width: 70%;" />
+            <ui:VisualElement name="ButtonsContainer" style="height: 100%; width: 30%; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+                <ui:Button text="New audio" display-tooltip-when-elided="true" name="NewAudioButton" style="height: 100%; width: 50%;" />
+                <ui:VisualElement style="width: 50%; height: 100%;">
+                    <ui:Button text="Refresh" display-tooltip-when-elided="true" name="RefreshButton" style="width: 100%; height: 50%;" />
+                    <ui:Button text="Update List" display-tooltip-when-elided="true" name="UpdateListButton" style="width: 100%; height: 50%;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
